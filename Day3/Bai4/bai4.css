@@ -1,0 +1,23 @@
+.countrys .country {
+  display: flex;
+  width: 600px;
+  padding: 7px 0;
+  justify-content: space-around;
+  border: 2px solid #ffff00;
+}
+.country {
+  display: inline;
+}
+
+.address {
+  margin-top: 30px;
+  margin-right: ;
+  background-color: #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+.contact,
+.position {
+  margin-top: 15px;
+  margin-left: 30px;
+}
