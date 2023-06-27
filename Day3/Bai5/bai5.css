@@ -13,6 +13,9 @@ body {
 .heading {
   font-size: 50px;
 }
+span {
+  font-size: 25px;
+}
 .heading span {
   color: #04adec;
 }

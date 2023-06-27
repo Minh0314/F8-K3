@@ -1,23 +1,38 @@
-.countrys .country {
-  display: flex;
-  width: 600px;
-  padding: 7px 0;
-  justify-content: space-around;
-  border: 2px solid #ffff00;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-.country {
-  display: inline;
+.container {
+  margin: 30px 60px;
 }
+.nation {
+  display: inline-flex;
+  border: 2px solid #b09658;
+  margin-bottom: 36px;
+}
+.united {
+  background: transparent;
+  background-color: #b09658;
+  border: none;
+  padding: 8px 32px;
+  color: #fff;
+}
+.united-item {
+  background: transparent;
 
-.address {
-  margin-top: 30px;
-  margin-right: ;
-  background-color: #ccc;
-  display: flex;
-  justify-content: space-between;
+  border: none;
+  padding: 8px 32px;
+  color: burlywood;
 }
-.contact,
-.position {
-  margin-top: 15px;
-  margin-left: 30px;
+.contact {
+  background: #f5f1f1;
+  display: flex;
+}
+.address {
+  margin: 40px 30px;
+}
+.map {
+  flex: 1;
+  margin-left: 50px;
 }
