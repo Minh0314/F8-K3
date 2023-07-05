@@ -85,14 +85,14 @@ img {
 }
 /*  style Login-===================================== */
 .form .login {
-  background-color: rgb(32, 148, 148);
+  background-color:#fff;
   width: 368px;
 }
 
 .form .login .title-login {
   font-size: 25px;
-  font-weight: 600;
-  color: #fff;
+  font-weight: bolder;
+  color: #2F2C31;
   text-align: center;
   margin-top: 40px;
   margin-bottom: 50px;
@@ -114,6 +114,7 @@ img {
   position: absolute;
   content: "";
   display: inline-block;
+  
   width: 54px;
   height: 1px;
   bottom: -16px;
@@ -177,11 +178,11 @@ img {
 }
 .sign-up {
   text-align: center;
-  color: #ccc;
+  color:#8D8785;
 }
 .sign-up a,
 .forgot-password {
-  color: #ccc;
+  color: #8D8785;
   text-decoration: none;
 }
 .login-btn {
@@ -204,5 +205,5 @@ img {
   transform: scale(0.95);
 }
 .row-left .remember-me {
-  color: #ccc;
+  color:#8D8785;
 }
