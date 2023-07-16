@@ -16,6 +16,7 @@
   position: relative;
 }
 .image .img-bottom {
+  background-image: url(https://nimblefincorp.com/wp-content/uploads/2023/04/Lawyer-jpg.webp);
 }
 .image .box {
   width: 200px;
@@ -30,12 +31,20 @@
   border-image-repeat: round;
 }
 .image .box .content {
+  position: absolute;
   display: flex;
   width: 120px;
   flex-direction: column;
   margin: 164px 0 0 41px;
   align-items: flex-end;
 }
+.image .box .content span {
+  background-image: url(https://nimblefincorp.com/wp-content/uploads/2023/04/Lawyer-jpg.webp);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .image .content span {
   display: block;
   font-size: 50px;
@@ -130,7 +139,7 @@
 .item .right-info {
   position: relative;
   font-weight: 500;
-  color: var(--color-text);
+  color: #9e9ea4;
 }
 .item .btn {
   width: 120px;
@@ -139,7 +148,7 @@
   background-color: #f2f2f2;
   border: none;
   text-align: center;
-  color: var(--color-text);
+  color: #9e9ea4;
 }
 .item .btn span {
   font-family: "Inter", sans-serif;
