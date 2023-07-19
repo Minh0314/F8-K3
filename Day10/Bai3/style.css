@@ -1,0 +1,87 @@
+body {
+  background-color: #ccc;
+}
+.envelope {
+  /* background-color: antiquewhite; */
+  width: 500px;
+  height: 400px;
+  position: relative;
+
+  margin: 100px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  z-index: -2;
+  visibility: visible;
+}
+.box {
+  display: inline-block;
+  margin: 200px auto;
+  background-color: transparent;
+  border-top: 100px solid transparent;
+  border-left: 200px solid rgba(221, 77, 77, 0.972);
+  border-right: 200px solid#ec5d50;
+  border-bottom: 100px solid #ec5d50;
+  z-index: 1;
+  /* transition: all 0.9s ease;
+  transform: translateY(0); */
+}
+
+/*============================================  Phần cần cứu================================ */
+.envelope .box:hover .letter{
+  transform: translateY(70px);
+
+}
+.letter {
+  position: absolute;
+  transition: all 0.9s ease;
+  transform: translateY(300px);
+  /* transform: translateY(70px); */
+  transform-origin: 100 100;
+  border-top: 1.25rem solid transparent;
+  background: linear-gradient(white, white) padding-box,
+    repeating-linear-gradient(
+        -45deg,
+        #e66e61 0,
+        #e66e61 12.5%,
+        transparent 0,
+        transparent 25%
+      )
+      0/6rem 6em;
+
+  left: 50px;
+  margin: 0 30px;
+
+  background-color: #fff;
+  width: 340px;
+  height: 350px;
+  z-index: -1;
+}
+
+.letter .text span:nth-child(1) {
+  margin: 20px 20px;
+  display: block;
+  width: 140px;
+  height: 25px;
+  background-color: #e66e61;
+}
+.letter .text span:nth-child(2) {
+  margin: 20px 20px;
+  display: block;
+  width: 80px;
+  height: 25px;
+  background-color: #e66e61;
+}
+.letter .circle {
+  width: 50px;
+  height: 50px;
+  background-color: #e66e6130;
+  border-radius: 99px;
+  top: -10px;
+  margin-left: 95%;
+  translate: -100%;
+  left: 0;
+}

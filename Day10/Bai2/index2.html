@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styleday9.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <style>
+    .title {
+  position: relative;
+  color: rgb(101, 218, 101);
+  overflow: hidden;
+}
+.title > span {
+  position: absolute;
+  color: red;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+ 
+.title >span >span{
+    position: absolute;
+    bottom: 0;
+}
+.title:hover > span {
+  top: 0;
+}
+
+/*      */
+.container{
+    margin: 0 auto;
+    /* width: 600px;
+    height: 300px; */
+    border: 1px solid red;
+}
+.box{
+    margin: 30px auto;
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    transition: all 0.7s ease;
+    transform-origin: 50% 0 ; 
+    scale: 1 0; 
+    /*làm 1 menu xổ xuống dùng : 
+    transform-origin: 50% 0 ; 
+    scale: 1 0; 
+     scale: 1 1;
+     */
+
+}
+.container:hover .box{
+    /* scale: 1.2 1.5; */
+    /* transform: rotate(360deg); */
+    /* transform: skew(-30deg);
+     */
+     transform: translateX(60px);
+     /* scale: 1 1; */
+
+}
+.box2 i  {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 30px;
+  /* width: 150px;
+  height: 150px; */
+  color: aqua;
+  transition: all 0.7s ease;
+}
+
+.box2 i:hover  {
+ rotate: 360deg ;
+}
+
+  </style>
+  <body>
+    <h2 class="title">
+        F8 FULL STACK
+        <span><span>F8 FULL STACK</span></span>
+    </h2>
+      
+    <!--   -->
+    <div class="container">
+      <div class="box">
+
+      </div>
+
+      <div class="box">
+        <button></button>
+      </div>
+    </div>
+
+    <div class="box2">
+<!-- <span>
+<i class="fa-solid fa-arrow-left"></i>
+</span> -->
+<i class="fa-solid fa-arrow-left"></i>
+    </div>
+  </body>
+</html>
+</body>
+</html>
