@@ -96,7 +96,7 @@ width: 800px;
         transform: rotateX(0deg);
     }
     50% {
-        transform: rotateX(-);
+        transform: rotateX(-90deg);
     }
     to {
         transform: rotateX(0deg);
