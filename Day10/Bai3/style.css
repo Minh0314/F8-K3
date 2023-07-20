@@ -1,11 +1,10 @@
 body {
   background-color: #ccc;
 }
-.envelope {
-  /* background-color: antiquewhite; */
+:root .envelope {
   width: 500px;
-  height: 400px;
-  position: relative;
+
+  padding-top: 200px;
 
   margin: 100px auto;
   position: relative;
@@ -14,32 +13,60 @@ body {
 
   overflow: hidden;
 
-  z-index: -2;
   visibility: visible;
 }
 .box {
   display: inline-block;
-  margin: 200px auto;
+  margin: auto;
   background-color: transparent;
   border-top: 100px solid transparent;
-  border-left: 200px solid rgba(221, 77, 77, 0.972);
+  border-left: 200px solid rgb(234, 76, 76);
   border-right: 200px solid#ec5d50;
   border-bottom: 100px solid #ec5d50;
-  z-index: 1;
-  /* transition: all 0.9s ease;
-  transform: translateY(0); */
+  z-index: 3;
 }
 
-/*============================================  Phần cần cứu================================ */
-.envelope .box:hover .letter{
-  transform: translateY(70px);
+.close {
+  border-top: 100px solid #ee3c28;
+  border-bottom: 100px solid transparent;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  position: absolute;
+  top: 200px;
+  left: 50px;
 
+  transition: 0.3s linear;
+  z-index: 3;
+}
+
+.open {
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid #ec5d50;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  position: absolute;
+  /* top: 200px;
+  */
+  bottom: 200px;
+  left: 50px;
+  z-index: 1;
+  display: none;
+  opacity: 1;
+}
+.envelope:hover .letter {
+  transform: translateY(-120px);
+}
+.envelope:hover .open {
+  display: block;
+}
+.envelope:hover .close {
+  display: none;
 }
 .letter {
   position: absolute;
   transition: all 0.9s ease;
-  transform: translateY(300px);
-  /* transform: translateY(70px); */
+  transform: translateY(100px);
+
   transform-origin: 100 100;
   border-top: 1.25rem solid transparent;
   background: linear-gradient(white, white) padding-box,
@@ -58,7 +85,7 @@ body {
   background-color: #fff;
   width: 340px;
   height: 350px;
-  z-index: -1;
+  z-index: 2;
 }
 
 .letter .text span:nth-child(1) {
@@ -84,4 +111,15 @@ body {
   margin-left: 95%;
   translate: -100%;
   left: 0;
+}
+@keyframes move {
+  form {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }

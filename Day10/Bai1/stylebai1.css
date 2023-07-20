@@ -16,6 +16,7 @@ a {
   height: 100vh;
   background-color: #01a9f4;
   position: relative;
+  z-index: 1;
 }
 header {
   position: absolute;
@@ -48,6 +49,7 @@ header .sub-title > span:nth-child(2) {
   border-bottom-right-radius: 999px;
   position: absolute;
   transition: 0.2s linear;
+  z-index: 2;
 }
 
 .toggle-article .toogle-menu a {
@@ -56,8 +58,9 @@ header .sub-title > span:nth-child(2) {
   list-style-type: none;
   font-size: 17px;
   font-weight: 600;
-  color: ;
+  /* color: ; */
   /* color: var(--primary-color); */
+  z-index: 3;
 }
 .toggle-article .toogle-menu li {
   margin-bottom: 15px;
@@ -78,42 +81,47 @@ header .sub-title > span:nth-child(2) {
   height: 110px;
   background-color: #fff;
   border-bottom-right-radius: 999px;
-  z-index: 99;
+  z-index: 5;
 }
 
 /* checked */
-#menu:checked ~ .toogle-menu {
+/* #menu:checked ~ .toogle-menu {
   display: block;
 }
 #menu:checked ~ .background-main {
   width: 100vw;
   height: 100vh;
   border-radius: 0;
-}
+} */
 
 .menu-btn {
   color: #d21919;
+  z-index: 2;
 }
 .arrow {
   color: #c11414;
+  z-index: 2;
 }
 .menu-btn,
 .arrow {
   /* display: none; */
 }
-.menu:checked ~ .icon .menu-btn {
+/* #menu:checked ~ .icon .menu-btn {
   display: none;
 }
-.menu:checked ~ .icon .arrow {
-  display: inline-block;
+#menu:checked ~ .icon .arrow {
+transform: rotate(350deg);
 }
 .menu:checked ~ .background {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   border-radius: 0;
 }
 .menu:checked ~ .toogle-menu {
   display: block;
+} */
+#menu:checked ~ .fa-arrow-left{
+  transform: rotate(360deg);
 }
 
 .menu-btn {
