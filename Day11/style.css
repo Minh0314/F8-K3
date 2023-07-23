@@ -16,8 +16,9 @@ li {
 }
 img {
   width: 100%;
-  display: block;
+  /* display: block; */
 }
+
 header {
   display: block;
   margin: 50px 50px;
@@ -27,9 +28,10 @@ header {
 .navbar {
   display: flex;
   margin: 0 auto;
-  width: 1390px;
+  max-width: 1390px;
   justify-content: space-between;
-  text-align: center;
+  align-items: center;
+  /* text-align: center; */
 }
 .navbar .menu-navbar ul {
   display: flex;
@@ -65,6 +67,15 @@ header {
   font-size: 19px;
   position: relative;
 }
+.navbar  .icon-bars{
+  /* display: none; */
+  border: 1px solid #ccc;
+  font-size: 27px;
+  /* position: relative; */
+  padding: 5px 10px;
+}
+
+
 .navbar .search .icon-cart::before {
   position: absolute;
   content: "";
@@ -92,8 +103,9 @@ header {
 
 .main-header {
   display: flex;
-  margin: 80px auto;
-  width: 1390px;
+  justify-content: center;
+  margin: 50px auto;
+  max-width: 1399px;
   padding: 30px 0;
   /* background-color: #F55253; */
 }
@@ -213,11 +225,13 @@ header {
 /*  end main head=================================== */
 
 section {
+  /* width: 100%; */
 }
-section .container {
+section .container-section{
+  display: block;
+  width: 100%;
   padding-top: 70px;
   padding-bottom: 90px;
-
   background-color: var(--color-item);
   margin: 0 auto;
 }
@@ -338,24 +352,24 @@ section .service .item .content p {
 
 .feature .feature-left {
   flex-grow: 1;
-  /* text-align: center; */
+  
 }
 .feature .feature-left img {
-  /* display: block; */
+  
   max-width: 636px;
   height: auto;
   object-fit: cover;
 }
 .feature .feature-right {
   flex-grow: 1;
-  /* display: inline; */
+  
   margin: 0 20px;
-  /* max-width: 527px; */
+  
 }
 .feature .feature-right .content {
-  /* width: 800px; */
+ 
   margin: 180px 0 20px 0;
-  /* max-width: 349px; */
+  
 }
 .feature .feature-right .content .title-top {
   font-family: Poppins, sans-serif;
@@ -636,4 +650,55 @@ footer .footer-end span {
   font-size: 16px;
   line-height: 40px;
   color: #a6a6a6;
+}
+@media screen and ( max-width : 1700px) {
+  
+}
+
+@media screen and ( max-width : 1399px) {
+  .container{ 
+    margin: 0 100px;
+  }
+
+  .main-header .title h1 {
+    font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  
+  letter-spacing: -0.01em;
+  color: var(--color2);
+    
+    
+  }
+  section .container-section{ 
+   width: 100vw;
+   margin: 0 auto;
+  }
+}
+@media screen and ( max-width : 1199px) {
+  .container{ 
+    margin: 0 0px;
+  }
+}
+@media screen and ( max-width : 992px) {
+  .container{ 
+    margin: 0 300px;
+  }
+  .navbar{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .navbar .menu-navbar,
+  .navbar .search
+   { 
+    display: none;
+  }
+
+}
+@media screen and ( max-width : 767px) {
+  
+}
+@media screen and ( max-width : 575px) {
+  
 }
