@@ -72,11 +72,15 @@ header .sub-title > span:nth-child(2) {
 #menu:checked ~ .list {
   display: none;
 }
-#menu:checked ~ .menu-btn {
+/* #menu:checked ~  .icon .menu-btn {
   display: none;
+} */
+#menu:checked ~ .icon .menu-btn > i {
+  transform: rotate(180deg);
 }
 
-.menu-btn i {
+
+.menu-btn i{
   font-size: 30px;
   color: #01a9f4;
 }
