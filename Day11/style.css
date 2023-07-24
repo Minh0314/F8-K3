@@ -68,7 +68,7 @@ header {
   position: relative;
 }
 .navbar  .icon-bars{
-  /* display: none; */
+  display: none;
   border: 1px solid #ccc;
   font-size: 27px;
   /* position: relative; */
