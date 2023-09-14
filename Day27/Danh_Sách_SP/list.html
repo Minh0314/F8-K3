@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./list.css">
+  </head>
+  <body>
+    <h2>Danh sách Sản Phẩm</h2>
+
+    <table class="product_table" border="1" style="width: 95vw;">
+      <!-- Sử dụng thuộc tính border để hiển thị đường viền của bảng -->
+      <tr>
+        <!-- Đây là hàng tiêu đề -->
+        <th>STT</th>
+        <th  style="width: 400px;">Tên sản phẩm</th>
+        <th>Giá</th>
+        <th style="width: 50px;">Thêm vào giỏ</th>
+      </tr>
+      <tr>
+        <!-- Đây là hàng dữ liệu -->
+        <td>1</td>
+        <td>Sản phẩm 1</td>
+        <td>1000</td>
+        <td><input type="number" id="quantity_1" value="1" >
+          <button type="button" id="add_to_cart_1" data-product-id="1" data-product-name="Sản phẩm 1" data-product-price="1000">Thêm vào giỏ</button>
+        </td>
+        </td>
+      </tr>
+      <tr>
+        <!-- Đây là hàng dữ liệu -->
+        <td>2</td>
+        <td>Sản phẩm 2</td>
+        <td>2000</td>
+        <td><input type="number" id="quantity_2" value="1" >
+          <button type="button" id="add_to_cart_2" data-product-id="2" data-product-name="Sản phẩm 2" data-product-price="2000">Thêm vào giỏ</button>
+        </td>
+      </tr>
+      <tr>
+        <!-- Đây là hàng dữ liệu -->
+        <td>3</td>
+        <td>Sản phẩm 3</td>
+        <td>3000</td>
+        <td><input type="number" id="quantity_3" value="1" >
+          <button type="button" id="add_to_cart_3" data-product-id="3" data-product-name="Sản phẩm 3" data-product-price="3000">Thêm vào giỏ</button>
+        </td>
+      </tr>
+      <tr>
+        <!-- Đây là hàng dữ liệu -->
+        <td>4</td>
+        <td>Sản phẩm 4</td>
+        <td>4000</td>
+        <td><input type="number" id="quantity_4" value="1" >
+          <button type="button" id="add_to_cart_4" data-product-id="4" data-product-name="Sản phẩm 4" data-product-price="4000">Thêm vào giỏ</button>
+        </td>
+      </tr>
+    </table>
+    <h3 class="heading-cart"> GIỎ HÀNG</h3>
+<table  class="cart" border="1" style="width: 98%;"> 
+<tr>
+  <th>STT</th>
+<th>Tên sản phẩm</th>
+<th>giá</th>
+<th> Số Lượng</th>
+<th> Thành Tiền</th>
+<th>Xóa</th>
+
+</tr>
+<td colspan="3">
+  Tổng
+</td>
+<td></td> <!--dòng này nhập tổng số lượng--> 
+  <td></td> <!--dòng này nhập tổng tiền--> 
+</table>
+
+
+    <div class="cart_data"> Giỏ hàng không có sản phẩm</div>
+    <script src="./list.js"></script>
+  </body>
+</html>
