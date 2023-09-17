@@ -1,78 +1,222 @@
-// localStorage.setItem('name','minh');
-// localStorage.setItem('age',19);
-// console.log(localStorage.getItem('name'));
-// // localStorage.removeItem('name')
-// localStorage.clear();
-var productTable = document.querySelector(".product_table");
-var btnAdd = productTable.querySelectorAll("button");
-var cartData = document.querySelector(".cart_data");
+var products = [
+  {
+    id: 1,
+    name: "Sản phẩm 1",
+    price: 1000,
+  },
 
-// 
-// Lắng nghe sự kiện click trên các nút "Thêm vào giỏ"
-document.addEventListener("DOMContentLoaded", function () {
-  const addToCartButtons = document.querySelectorAll("[id^='add_to_cart_']");
+  {
+    id: 2,
+    name: "Sản phẩm 2",
+    price: 2000,
+  },
 
-  addToCartButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      // Lấy thông tin sản phẩm từ thuộc tính data
-      const productId = button.getAttribute("data-product-id");
-      const productName = button.getAttribute("data-product-name");
-      const productPrice = button.getAttribute("data-product-price");
+  {
+    id: 3,
+    name: "Sản phẩm 3",
+    price: 3000,
+  },
 
+  {
+    id: 4,
+    name: "Sản phẩm 4",
+    price: 4000,
+  },
+];
+
+var carts = [];
+var getProduct =function(id){ 
+  return products.find(function(product){ 
+    return +product.id === +id
+  })
+};
+var deleteCartItem = function(id){ 
+  if(confirm('bạn có chắc chắn'))
+carts = carts.filter(function(cartItem){ 
+return +cartItem.productId !== +id
+})
+renderCart()
+};
+var handleUpdateCart= function(){ 
+  var cartEl = document.querySelector(".carts");
+var indexDelete;
+  var quantityInputList = cartEl.querySelectorAll(".quantity")
+quantityInputList.forEach(function(quantityInput){ 
+quantityInputList.forEach(function(quantityInput,index){ 
+if(quantityInput.value>0){ 
+  carts[index].quantity =quantityInput.value;
+
+}  else{
+  indexDelete=index
+}
+});
+if(indexDelete){ 
+carts.splice(indexDelete,1);
+}
+renderCart()
+});
+};
+
+var renderCart = function() {
+  var cartEl = document.querySelector(".carts");
+  var table = `
+    <table cellpadding="0" cellspacing="0" width="100%" border="1" id="cart_table">
+      <thead>
+        <tr>
+          <th width="5%">STT</th>
+          <th>Tên sản phẩm</th>
+          <th width="20%">Giá</th>
+          <th width="20%">Số lượng</th>
+          <th width="20%">Thành tiền</th>
+          <th width="5%">Xoá</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  `;
+  cartEl.innerHTML = table;
+  var tbody = cartEl.querySelector('tbody');
+  var totalAmount= 0;
+  var totalQuantity = 0;
+
+  carts.forEach(function(cartItem, index) {
+    var product = getProduct(cartItem.productId);
+    var tr = document.createElement("tr");
     
-      const quantityInput = document.getElementById(`quantity_${productId}`);
-      const quantity = parseInt(quantityInput.value);
+    var tdNo = document.createElement("td");
+    tdNo.innerText = index + 1;
+    tr.appendChild(tdNo);
 
-      const totalPrice = productPrice * quantity;
+    var tdName = document.createElement("td");
+    tdName.innerText = product.name;
+    tr.appendChild(tdName);
 
-     
-      const cartTable = document.querySelector(".cart");
-      const newRow = cartTable.insertRow(-1); // Chèn vào cuối bảng
-      const cell1 = newRow.insertCell(0);
-      const cell2 = newRow.insertCell(1);
-      const cell3 = newRow.insertCell(2);
-      const cell4 = newRow.insertCell(3);
-      const cell5 = newRow.insertCell(4);
-      const cell6 = newRow.insertCell(5);
+    var tdPrice = document.createElement('td');
+    tdPrice.innerText = product.price.toLocaleString();
+    tr.appendChild(tdPrice);
 
-      cell1.innerHTML = cartTable.rows.length - 2; // STT
-      cell2.innerHTML = productName; // Tên sản phẩm
-      cell3.innerHTML = productPrice; // Giá
-      cell4.innerHTML = quantity; // Số lượng
-      cell5.innerHTML = totalPrice; // Thành tiền
-      cell6.innerHTML = '<button type="button" class="remove-button">Xóa</button>';
+    var tdQuantity = document.createElement('td');
+    var quantityInput = document.createElement("input");
+    quantityInput.type = 'number';
+    quantityInput.value = cartItem.quantity;
+    quantityInput.classList.add("quantity");
+    tdQuantity.appendChild(quantityInput);
+    tr.appendChild(tdQuantity);
 
-   
-      updateCartTotal();
+    var tdAmount = document.createElement('td');
+    tdAmount.innerText = (product.price * cartItem.quantity).toLocaleString();
+    tr.appendChild(tdAmount);
 
-      
-      button.disabled = true;
+    var tdRemove = document.createElement('td');
+    var removeBtn = document.createElement('button');
+    removeBtn.innerText = "Xóa";
+    removeBtn.addEventListener("click",function(){ 
+      deleteCartItem(cartItem.productId);
+    })
+    tdRemove.appendChild(removeBtn);
+    tr.appendChild(tdRemove);
 
-      // Lắng nghe sự kiện click trên nút "Xóa"
-      const removeButton = cell6.querySelector(".remove-button");
-      removeButton.addEventListener("click", function () {
-        newRow.remove(); // Xóa hàng khỏi giỏ hàng
-        button.disabled = false; 
-        updateCartTotal();
-      });
-    });
+    tbody.appendChild(tr);
+
+    totalAmount +=product.price * cartItem.quantity;
+    totalQuantity += +cartItem.quantity
   });
 
+  // thống kê
+  var tr = document.createElement('tr');
+  var td = document.createElement('td');
+  td.innerText = `Tổng`;
+  td.setAttribute("colspan",3);
+  tr.append(td);
   
-  function updateCartTotal() {
-    const cartTable = document.querySelector(".cart");
-    const totalQuantityCell = cartTable.rows[cartTable.rows.length - 1].cells[3];
-    const totalPriceCell = cartTable.rows[cartTable.rows.length - 1].cells[4];
+  var td = document.createElement('td');
+  td.innerText = totalQuantity.toLocaleString();
+  tr.append(td); 
 
-    let totalQuantity = 0;
-    let totalPrice = 0;
+  var td = document.createElement('td');
+  td.innerText = totalAmount.toLocaleString() ;
+  td.setAttribute("colspan",2);
+  tr.append(td);
 
-    for (let i = 1; i < cartTable.rows.length - 1; i++) {
-      totalQuantity += parseInt(cartTable.rows[i].cells[3].innerHTML);
-      totalPrice += parseFloat(cartTable.rows[i].cells[4].innerHTML);
-    }
+  tbody.append(tr)
+  //thêm nút
+  var updateCartBtn = document.createElement("button");
 
-    totalQuantityCell.innerHTML = totalQuantity;
-    totalPriceCell.innerHTML = totalPrice;
-  }
+  updateCartBtn.innerText=("Cập nhật giỏ hàng");
+  updateCartBtn.addEventListener("click",handleUpdateCart
+
+  )
+  cartEl.append(updateCartBtn)
+  var deleteCarBtn=  document.createElement("button");
+  deleteCarBtn.innerText=("xóa giỏ hàng")
+  cartEl.append(deleteCarBtn);
+
+};
+
+
+var addCart = function(cartItem){ 
+ var index = carts.findIndex(function(item){ 
+  return item.productId === +cartItem.productId
 });
+if(index=== -1){
+  carts.push(cartItem)
+}else{ 
+  carts[index].quantity +=cartItem.quantity
+}
+
+}
+var handleAddCart = function(product,quantity){ 
+
+  if(quantity<0|Number.isNaN(quantity)){ 
+quantity =1
+  }
+var productId = product.id;
+addCart({
+  productId,quantity,
+});
+renderCart()
+}
+var tableProducts = document.querySelector(".products tbody");
+
+
+products.forEach(function (product, index) {
+  
+  var tr = document.createElement("tr");
+  var tdNo = document.createElement("td");
+  tdNo.innerText = index + 1;
+  tr.append(tdNo);
+
+  var tdName = document.createElement("td");
+  tdName.innerText = product.name;
+  tr.append(tdName);
+  var tdPrice = document.createElement('td');
+  tdPrice.innerText = product.price.toLocaleString();
+  tr.append(tdPrice);
+  var tdAction = document.createElement("td");
+  var quantityInput = document.createElement("input");
+  quantityInput.style = `width: 90%; display: block; margin: 0 auto;`
+  quantityInput.value =1
+  quantityInput.type="Number"
+
+  tdAction.append(quantityInput);
+  var button = document.createElement("button");
+  button.style= `width = 100%;`;
+
+
+  button.addEventListener('click',function(){ 
+    var quantity = quantityInput.value
+    handleAddCart(product,+quantity)
+  })
+
+
+
+  button.innerText= `Thêm vào giỏ`;
+
+  tdAction.append(button)
+tr.append(tdAction);
+
+tableProducts.append(tr)
+});
+
+
+
