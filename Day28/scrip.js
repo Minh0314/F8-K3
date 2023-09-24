@@ -2,6 +2,7 @@
 var progressBar = document.querySelector(".progress-bar");
 var progress = progressBar.querySelector(".progress");
 var progressSpan = progress.querySelector("span");
+var audio = document.querySelector("audio");
 
 var timePreview = progressBar.querySelector(".time-preview");
 var handleUpdateValue = function (value) {
@@ -68,7 +69,7 @@ document.addEventListener("mousemove", function (e) {
   }
 });
 //xây dựng player
-var audio = new Audio("/F8-Offline-K3/Day28/Mp3/Haytraochoanh.mp3   ");
+// var audio = new Audio("/Day28/Mp3/Haytraochoanh.mp3");
 // console.log(audio);
 var playBtn = document.querySelector(".play-btn");
 var currentTimeEL = progressBar.previousElementSibling;
@@ -165,3 +166,42 @@ audio.addEventListener("ended", function () {
   handleUpdateValue(0);
   audio.currentTime = 0;
 });
+
+//xây dựng ELM
+var karaoke = document.querySelector(".karaoke");
+var karaokeInner = karaoke.querySelector(".karaoke-inner");
+var karaokePlayBtn = karaoke.querySelector(".karaoke-play");
+var karaokeCloseBtn = karaoke.querySelector(".close");
+var player = document.querySelector(".player");
+var lyric = karaokePlayBtn.addEventListener("click", function () {
+  karaokeInner.style.top = 0;
+  player.classList.add("bottom");
+});
+karaokeCloseBtn.addEventListener("click", function () {
+  karaokeInner.style.top = `100%`;
+  player.classList.remove("bottom");
+});
+var karaokeInterval;
+// lắng nghe sự kiện play
+audio.addEventListener("play", function () {
+  console.log("play");
+
+  karaokeInterval = setInterval(handleKaraoke, 100);
+});
+// lắng nghe sự kiện pause
+audio.addEventListener("pause", function () {
+  console.log("pause");
+  clearInterval(karaokeInterval);
+});
+var handleKaraoke = function () {
+  var currentTime = audio.currentTime * 1000;
+  var index = lyric.findIndex(function (lyricItem) {
+    return (
+      currentTime >= lyricItem.words[0].startTime &&
+      currentTime <= lyricItem.words[lyricItem.words.length - 1].endTime
+    );
+  });
+  console.log(index);
+};
+
+// ===============
